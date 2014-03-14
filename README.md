@@ -1,6 +1,6 @@
 ### C Parse URI
 
-URI Percent encode/decode written in C with Python bindings.
+URI percent encode/decode written in C with Python bindings.
 
 Lots of inspiration from libevent, libcurl, and a very nice german named Jochen.
 
@@ -18,6 +18,7 @@ python setup.py install
 Hello%20World
 >>>cparseuri.decode("Hello%20World")
 Hello World
+```
 
 #### Run Tests
 
