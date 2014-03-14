@@ -1,0 +1,19 @@
+#!/usr/bin/env python
+import timeit
+
+n = 100000
+while True:
+
+    print "ENCODE:"
+    t = timeit.timeit("cparseuri.encode(s)", setup="import cparseuri; s=''.join([chr(i) for i in range(1,256)])", number=n)
+    print "cparseuri x %d: %f" % (n, t)
+    t = timeit.timeit("urllib2.quote(s)", setup="import urllib2; s=''.join([chr(i) for i in range(1,256)])", number=n)
+    print "urllib2   x %d: %f\n" % (n, t)
+
+    print "DECODE:"
+    t = timeit.timeit("cparseuri.decode(s)", setup="import cparseuri; s=cparseuri.encode(''.join([chr(i) for i in range(1,256)]))", number=n)
+    print "cparseuri x %d: %f" % (n, t)
+    t = timeit.timeit("urllib2.unquote(s)", setup="import urllib2; s=urllib2.quote(''.join([chr(i) for i in range(1,256)]))", number=n)
+    print "urllib2   x %d: %f" % (n, t)
+    print "----\n"
+
