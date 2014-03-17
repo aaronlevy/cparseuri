@@ -55,12 +55,6 @@ class TestCUriParse(object):
             sorted(list(self.safe_chars))
         )
 
-    def test_decode_backslash_escape(self):
-        assert_equal(decode('\x22hello%20world\x22'), '"hello world"')
-
-    def test_decode_quoted_backslash(self):
-        assert_equal(decode('%5cx22hello'), '\\x22hello')
-
     def test_decode_quoted_percent(self):
         assert_equal(decode('%252F'), '%2F')
 

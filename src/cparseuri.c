@@ -48,11 +48,6 @@ decode(PyObject *self, PyObject *args)
       char tmp[] = { *(p+1), *(p+2), '\0' };
       result[i++] = (char)strtol(tmp, NULL, 16);
       p += 2;
-    } else if (*p == '\\' && *(p+1) == 'x' && isxdigit(*(p+2)) && isxdigit(*(p+3))) {
-      // Escaped hex: \\xXX
-      char tmp[] = { *(p+2), *(p+3), '\0' };
-      result[i++] = (char)strtol(tmp, NULL, 16);
-      p += 3;
     } else {
       result[i++] = *p;
     }
